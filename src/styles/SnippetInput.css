@@ -1,0 +1,46 @@
+/* SnippetInput.css */
+.snippet-form {
+    background-color: #2c2c3a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .snippet-form input,
+  .snippet-form textarea {
+    background-color: #343443;
+    color: #e0e0e0;
+    border: none;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .snippet-form input::placeholder,
+  .snippet-form textarea::placeholder {
+    color: #8e8e9a;
+  }
+  
+  .snippet-form textarea {
+    height: 150px;
+    font-family: 'Courier New', Courier, monospace; /* Code-friendly font */
+  }
+  
+  .snippet-form button {
+    background-color: #556e80;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .snippet-form button:hover {
+    background-color: #72889a;
+  }
+  

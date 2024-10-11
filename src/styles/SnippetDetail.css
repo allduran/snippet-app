@@ -1,0 +1,39 @@
+/* SnippetDetail.css */
+.snippet-detail {
+    background-color: #2c2c3a;
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+  }
+  
+  .snippet-detail h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  
+  .snippet-detail pre {
+    background-color: #343443;
+    padding: 15px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 14px;
+    color: #e0e0e0;
+  }
+  
+  .snippet-detail button {
+    background-color: #556e80;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .snippet-detail button:hover {
+    background-color: #72889a;
+  }
+  
