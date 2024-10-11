@@ -13,3 +13,26 @@ h1 {
   margin-bottom: 20px;
   color: #e0e0e0;
 }
+
+.app button {
+  margin-bottom: 20px; /* Add some space below the button */
+  padding: 10px 15px; /* Padding for a better look */
+  background-color: #556E80; /* Your background color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.app button:hover {
+  background-color: #A1D7FF; /* Change color on hover */
+}
+
+.menu-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  position: sticky;
+}

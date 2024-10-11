@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
-import SnippetGrid from './components/SnippetGrid';
-import SnippetInput from './components/SnippetInput';
-import './App.css';
+import { useEffect, useState } from "react";
+import SnippetGrid from "./components/SnippetGrid";
+import SnippetInput from "./components/SnippetInput";
+import "./App.css";
 
 const App = () => {
   const [snippets, setSnippets] = useState([]);
+  const [isInputVisible, setIsInputVisible] = useState(false); // State to manage SnippetInput visibility
 
   // Load snippets from localStorage when the app starts
   useEffect(() => {
-    const savedSnippets = localStorage.getItem('snippets');
+    const savedSnippets = localStorage.getItem("snippets");
     if (savedSnippets) {
       setSnippets(JSON.parse(savedSnippets));
     }
@@ -16,7 +17,7 @@ const App = () => {
 
   // Save snippets to localStorage whenever snippets change
   useEffect(() => {
-    localStorage.setItem('snippets', JSON.stringify(snippets));
+    localStorage.setItem("snippets", JSON.stringify(snippets));
   }, [snippets]);
 
   // Add a new snippet
@@ -32,8 +33,14 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>Code Snippet Manager</h1>
-      <SnippetInput addSnippet={addSnippet} />
+      <div className="menu-bar">
+        <h1>Code Snippet Manager</h1>
+
+        <button onClick={() => setIsInputVisible(!isInputVisible)}>
+          {isInputVisible ? "Hide Input" : "Add Snippet"}
+        </button>
+      </div>
+      {isInputVisible && <SnippetInput addSnippet={addSnippet} />}
       <SnippetGrid snippets={snippets} deleteSnippet={deleteSnippet} />
     </div>
   );
