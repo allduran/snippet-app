@@ -1,12 +1,22 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import SnippetCard from './SnippetCard';
-import SnippetDetail from './SnippetDetail';
-
+import Modal from './Modal'; // Import the Modal component
 import '../styles/SnippetGrid.css';
 
 const SnippetGrid = ({ snippets, deleteSnippet }) => {
   const [selectedSnippet, setSelectedSnippet] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false); // State to manage modal visibility
+
+  const openModal = (snippet) => {
+    setSelectedSnippet(snippet);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setSelectedSnippet(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="snippet-grid">
@@ -14,20 +24,24 @@ const SnippetGrid = ({ snippets, deleteSnippet }) => {
         <SnippetCard 
           key={index} 
           snippet={snippet} 
-          onClick={() => setSelectedSnippet({ ...snippet, index })} 
+          onClick={() => openModal(snippet)} // Open modal with snippet
           onDelete={() => deleteSnippet(index)}
         />
       ))}
-      {selectedSnippet && (
-        <SnippetDetail 
-          snippet={selectedSnippet} 
-          onClose={() => setSelectedSnippet(null)} 
-          onDelete={() => {
-            deleteSnippet(selectedSnippet.index);
-            setSelectedSnippet(null); // Close after deleting
-          }}
-        />
-      )}
+      
+      {/* Modal to show snippet details */}
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {selectedSnippet && (
+          <>
+            <h2>{selectedSnippet.title}</h2>
+            <pre><code>{selectedSnippet.code}</code></pre>
+            <button onClick={() => {
+              deleteSnippet(snippets.indexOf(selectedSnippet));
+              closeModal();
+            }}>Delete</button>
+          </>
+        )}
+      </Modal>
     </div>
   );
 };
